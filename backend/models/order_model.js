@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 // Order Schema Created - It includes all the required fields.
 const orderSchema = new mongoose.Schema(

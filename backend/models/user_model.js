@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 // User Schema Created - It includes all the required fields.
 const userSchema = new mongoose.Schema({

@@ -7,3 +7,11 @@ zk1^R6VI
 Personal email & password
 sb-8n9jc27060508@personal.example.com
 X/T1Q9Vo
+
+import {v2 as cloudinary} from 'cloudinary';
+          
+cloudinary.config({ 
+  cloud_name: 'dbq38tskr', 
+  api_key: '738238243676886', 
+  api_secret: 'G2d1Du0_EdiO5cGuQ1j2s33juR8' 
+});
