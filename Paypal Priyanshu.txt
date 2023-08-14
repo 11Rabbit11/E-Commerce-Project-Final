@@ -1,0 +1,9 @@
+CLIENT ID = Aag_JdMdMqi64XphqdZ5m-ogoBeq7QU-422J-IdzvpJVCK6xCD4rWZHB4DBXrjECp74RJUOnTsdEC4fw
+
+Business email & password
+sb-vhib427045770@business.example.com
+zk1^R6VI
+
+Personal email & password
+sb-8n9jc27060508@personal.example.com
+X/T1Q9Vo
