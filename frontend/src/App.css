@@ -66,11 +66,12 @@
 
   footer{
     background-color: #b9bbc0;
+    height: 2vh;
   }
 
   .footer-container{
     background-color: #1a1a1b;
-    padding: 30px;
+    padding: 23px;
 
   }
 

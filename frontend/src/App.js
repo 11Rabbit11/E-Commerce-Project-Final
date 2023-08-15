@@ -20,7 +20,6 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 import ProfileScreen from "./screens/ProfileScreen";
-import Button from "react-bootstrap/Button";
 import { getError } from "./utils";
 import axios from "axios";
 import SearchBox from "./components/SearchBox";
@@ -154,7 +153,7 @@ function App() {
             <Nav.Item className="ms-2">
               <strong>Categories</strong>
             </Nav.Item>
-            {categories.map((category) => (
+            {categories?.map((category) => (
               <Nav.Item key={category}>
                 <LinkContainer
                   to={{

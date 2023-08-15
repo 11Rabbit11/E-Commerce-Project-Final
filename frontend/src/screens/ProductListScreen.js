@@ -183,7 +183,7 @@ export default function ProductListScreen() {
                       type="button"
                       variant="light"
                       onClick={() => navigate(`/admin/product/${product._id}`)}
-                    >
+                      className='pt-0 mb-4'>
                       Edit
                     </Button>
                     &nbsp;
@@ -191,7 +191,7 @@ export default function ProductListScreen() {
                       type="button"
                       variant="light"
                       onClick={() => deleteHandler(product)}
-                    >
+                      className='pt-0 mb-4'>
                       Delete
                     </Button>
                   </td>
