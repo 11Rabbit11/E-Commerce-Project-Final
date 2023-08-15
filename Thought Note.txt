@@ -13,3 +13,11 @@ JWT.
 I learn to publish my website on Netlify and to use mongodb Atlas and render.
 
 The combination of frontend and backend technologies, integration of various APIs, and the complexity of e-commerce operations undoubtedly enhance my skills in web development.
+
+Admin Email:
+admin@gmail.com
+Password: admin
+
+User Email:
+user@gmail.com
+Password: user

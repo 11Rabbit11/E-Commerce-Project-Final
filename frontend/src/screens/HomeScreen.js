@@ -49,7 +49,7 @@ function HomeScreen() {
   return (
     <div className="homeScreen-container">
       <Helmet>
-        <title>NovaShoppi</title>
+        <title>E-Commerce</title>
       </Helmet>
       <div className="homeImg-container shadow">
         <img
