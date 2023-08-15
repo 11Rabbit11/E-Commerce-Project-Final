@@ -1,0 +1,129 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+
+  .navbar{
+    background-color: #4f515362;
+    padding: 10px;
+    margin: 0;
+  }
+
+  header{
+    background-color: #133a6162;
+   
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+
+
+  main{
+    background-color: #b9bbc0;
+    padding: 20px;
+  }
+
+
+  
+  .App-link {
+    color: #61dafb;
+  }
+
+
+  .nav-link{
+    color: #ffffff;
+    font-weight: bold;
+  }
+
+  strong{
+    color: #1b1919;
+    font-size: larger;
+    font-weight: bolder;
+  }
+
+  .img-container{
+
+    text-align: center;
+  }
+
+  footer{
+    background-color: #b9bbc0;
+  }
+
+  .footer-container{
+    background-color: #1a1a1b;
+    padding: 30px;
+
+  }
+
+  .footer-icon{
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #ebebeb;
+  }
+
+  .footer-icon i{
+    padding: 20px 50px 20px 50px;
+    font-size: larger;
+  }
+
+  .footer-contactUs h3{
+    color: #c7c9cb;
+    padding: 10px;
+  }
+
+  .copyright{
+    padding-top: 10px;
+    color: #ebebeb;
+    font-size: large;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
