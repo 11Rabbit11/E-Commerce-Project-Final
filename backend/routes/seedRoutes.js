@@ -5,6 +5,7 @@ import User from '../models/user_model.js';
 
 const seedRouter = express.Router();
 
+//Route to seed DB with sample product and image
 seedRouter.get('/', async (req, res) => {
   await Product.deleteMany({}); // Use deleteMany instead of remove
   const createdProducts = await Product.insertMany(data.products);

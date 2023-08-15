@@ -3,6 +3,7 @@ import Rating from './Rating';
 import axios from 'axios';
 import { useContext } from 'react';
 import { Store } from '../Store';
+import { BASE_URL } from '../config';
 
 function Product(props) {
   const { product } = props;
@@ -13,9 +14,14 @@ function Product(props) {
   } = state;
 
   const addToCartHandler = async (item) => {
+    // Check if the product already exists in the cart
     const existItem = cartItems.find((x) => x._id === product._id);
+    
+    // Calculate the new quantity based on whether the item already exists or not
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/products/${item._id}`);
+    const { data } = await axios.get(BASE_URL + `/api/products/${item._id}`);
+    
+    // Check if the product is still in stock after adding to the cart
     if (data.countInStock < quantity) {
       window.alert('Sorry. Product is out of stock');
       return;
@@ -33,7 +39,7 @@ function Product(props) {
       </Link>
       <div className='product-card'>
         <div to={`/product/${product.slug}`}>
-          <h4 className='product-name'>{product.name}</h4>
+          <h6 className='product-name'>{product.name}</h6>
         </div>
         <Rating rating={product.rating} numReviews={product.numReviews} />
         <p>${product.price}</p>

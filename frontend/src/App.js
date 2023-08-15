@@ -33,6 +33,7 @@ import OrderListScreen from "./screens/OrderListScreen";
 import UserListScreen from "./screens/UserListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
 import "./App.css";
+import { BASE_URL } from "./config.js";
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -50,8 +51,9 @@ function App() {
 
   useEffect(() => {
     const fetchCategories = async () => {
+      // Fetch categories from the backend
       try {
-        const { data } = await axios.get(`/api/products/categories`);
+        const { data } = await axios.get (BASE_URL +`/api/products/categories`);
         setCategories(data);
       } catch (err) {
         toast.error(getError(err));
@@ -69,6 +71,7 @@ function App() {
         }
       >
         <ToastContainer position="bottom-center" limit={1} />
+        {/* Header */}
         <header>
           <Navbar className="navbar" expand="lg">
             <Container>
@@ -87,6 +90,8 @@ function App() {
                   />
                 </Navbar.Brand>
               </LinkContainer>
+
+              {/* Navbar */}
               <Navbar.Toggle aria-controls="basic-navbar-nav" style= {{ color : 'white'}} />
               <Navbar.Collapse id="basic-navbar-nav" style= {{color: 'white'}}>
                 <SearchBox />
@@ -142,6 +147,9 @@ function App() {
             </Container>
           </Navbar>
         </header>
+        {/* Header End */}
+        
+        {/* Categories */}
         <div
           className={
             sidebarIsOpen
@@ -169,6 +177,7 @@ function App() {
           </Nav>
         </div>
         <main>
+          {/* Products */}
           <Container className="mt-3">
             <Routes>
               <Route path="/product/:slug" element={<ProductScreen />} />
@@ -259,6 +268,8 @@ function App() {
             </Routes>
           </Container>
         </main>
+
+        {/* Footer */}
         <footer>
           <div className="footer-container">
             <div className="img-container center">
@@ -277,9 +288,10 @@ function App() {
               <div><i class="fa-brands fa-linkedin"></i></div>
             </div>
 
-            <div className="text-center copyright"> © 2023, All Rights Reserved E-Com Clothing</div>
+            <div className="text-center copyright"> © 2023 E-Com Clothing. All Rights Reserved. </div>
           </div>
         </footer>
+        {/* Footer End */}
       </div>
     </BrowserRouter>
   );

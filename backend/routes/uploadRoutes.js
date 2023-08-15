@@ -8,6 +8,7 @@ const upload = multer();
 
 const uploadRouter = express.Router();
 
+//Route to handle file upload to Cloudinary
 uploadRouter.post(
   '/',
   isAuth,

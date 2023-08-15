@@ -12,6 +12,7 @@ import { getError } from '../utils';
 import { Store } from '../Store';
 import CheckoutSteps from '../components/CheckoutSteps';
 import LoadingBox from '../components/LoadingBox';
+import { BASE_URL } from '../config';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -44,12 +45,13 @@ export default function PlaceOrderScreen() {
   cart.taxPrice = round2(0.15 * cart.itemsPrice);
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
+  //Place Order Handler
   const placeOrderHandler = async () => {
     try {
       dispatch({ type: 'CREATE_REQUEST' });
 
       const { data } = await Axios.post(
-        '/api/orders',
+        BASE_URL +'/api/orders',
         {
           orderItems: cart.cartItems,
           shippingAddress: cart.shippingAddress,
@@ -84,11 +86,15 @@ export default function PlaceOrderScreen() {
   return (
     <div>
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
+      
+      {/* Preview Order */}
       <Helmet>
         <title>Preview Order</title>
       </Helmet>
       <h1 className="my-3">Preview Order</h1>
       <Row>
+        
+        {/* Shipping Summary */}
         <Col md={8}>
           <Card className="mb-3">
             <Card.Body>
@@ -140,6 +146,8 @@ export default function PlaceOrderScreen() {
             </Card.Body>
           </Card>
         </Col>
+
+        {/* Order Summary */}
         <Col md={4}>
           <Card>
             <Card.Body>
@@ -189,6 +197,7 @@ export default function PlaceOrderScreen() {
             </Card.Body>
           </Card>
         </Col>
+        
       </Row>
     </div>
   );

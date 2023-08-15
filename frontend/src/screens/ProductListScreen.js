@@ -9,6 +9,7 @@ import { Store } from '../Store';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { getError } from '../utils';
+import { BASE_URL } from '../config';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -80,7 +81,7 @@ export default function ProductListScreen() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`/api/products/admin?page=${page} `, {
+        const { data } = await axios.get(BASE_URL +`/api/products/admin?page=${page} `, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
 
@@ -95,12 +96,13 @@ export default function ProductListScreen() {
     }
   }, [page, userInfo, successDelete]);
 
+  //On Product create
   const createHandler = async () => {
     if (window.confirm('Are you sure to create?')) {
       try {
         dispatch({ type: 'CREATE_REQUEST' });
         const { data } = await axios.post(
-          '/api/products',
+          BASE_URL +'/api/products',
           {},
           {
             headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -118,10 +120,11 @@ export default function ProductListScreen() {
     }
   };
 
+  //On Product delete
   const deleteHandler = async (product) => {
     if (window.confirm('Are you sure to delete?')) {
       try {
-        await axios.delete(`/api/products/${product._id}`, {
+        await axios.delete(BASE_URL + `/api/products/${product._id}`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         toast.success('product deleted successfully');

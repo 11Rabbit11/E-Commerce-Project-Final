@@ -6,6 +6,7 @@ import { Store } from '../Store';
 import { toast } from 'react-toastify';
 import { getError } from '../utils';
 import axios from 'axios';
+import { BASE_URL } from '../config';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -37,7 +38,7 @@ export default function ProfileScreen() {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        '/api/users/profile',
+        BASE_URL +'/api/users/profile',
         {
           name,
           email,
@@ -63,10 +64,15 @@ export default function ProfileScreen() {
 
   return (
     <div className="container small-container">
+      
+      {/* User Profile */}
       <Helmet>
         <title>User Profile</title>
       </Helmet>
       <h1 className="my-3">User Profile</h1>
+      
+      {/* User Form */}
+      
       <form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="name">
           <Form.Label>Name</Form.Label>

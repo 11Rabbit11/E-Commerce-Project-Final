@@ -7,6 +7,7 @@ import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
 import { getError } from '../utils';
 import Button from 'react-bootstrap/esm/Button';
+import { BASE_URL } from '../config';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -31,11 +32,12 @@ export default function OrderHistoryScreen() {
     error: '',
   });
   useEffect(() => {
+    //Fetch user orders
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
         const { data } = await axios.get(
-          `/api/orders/mine`,
+          BASE_URL + `/api/orders/mine`,
 
           { headers: { Authorization: `Bearer ${userInfo.token}` } }
         );
@@ -54,13 +56,14 @@ export default function OrderHistoryScreen() {
       <Helmet>
         <title>Order History</title>
       </Helmet>
-
+      {/* Order History */}
       <h1>Order History</h1>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
+        //Table of orders
         <table className="table">
           <thead>
             <tr>

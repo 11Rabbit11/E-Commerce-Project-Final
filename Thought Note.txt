@@ -1,0 +1,15 @@
+
+My project involves the creation of a comprehensive e-commerce application using React for the frontend and Node.js for the backend. The application will encompass a wide range of features, from product listing and rendering to user authentication and payment processing. The goal is to develop a fully functional online store that offers a seamless shopping experience to users.
+
+Frontend Expertise: We will demonstrate our mastery of React by implementing key frontend aspects such as page routing, UI styling, and dynamic rendering of products. This will ensure a user-friendly and visually appealing interface.
+
+Admin Features: The inclusion of admin-specific functionalities like product and user management showcases our ability to implement role-based features.
+
+I added functionalities for sign in, sign up
+Ordering products, search bar, etc. Fully Implementing Cart features.
+The difficult part was integrating with paypal and also I have implemented authorization using 
+JWT.
+
+I learn to publish my website on Netlify and to use mongodb Atlas and render.
+
+The combination of frontend and backend technologies, integration of various APIs, and the complexity of e-commerce operations undoubtedly enhance my skills in web development.

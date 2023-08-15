@@ -22,6 +22,8 @@ export default function PaymentMethodScreen() {
       navigate('/shipping');
     }
   }, [shippingAddress, navigate]);
+
+  //Submit Handler When Payment is Selected
   const submitHandler = (e) => {
     e.preventDefault();
     ctxDispatch({ type: 'SAVE_PAYMENT_METHOD', payload: paymentMethodName });
@@ -36,6 +38,8 @@ export default function PaymentMethodScreen() {
           <title>Payment Method</title>
         </Helmet>
         <h1 className="my-3">Payment Method</h1>
+        
+        {/* Payment Form */}
         <Form onSubmit={submitHandler}>
           <div className="mb-3">
             <Form.Check
@@ -47,20 +51,11 @@ export default function PaymentMethodScreen() {
               onChange={(e) => setPaymentMethod(e.target.value)}
             />
           </div>
-          {/* <div className="mb-3">
-            <Form.Check
-              type="radio"
-              id="Stripe"
-              label="Stripe"
-              value="Stripe"
-              checked={paymentMethodName === 'Stripe'}
-              onChange={(e) => setPaymentMethod(e.target.value)}
-            />
-          </div> */}
           <div className="mb-3">
             <Button type="submit">Continue</Button>
           </div>
         </Form>
+
       </div>
     </div>
   );

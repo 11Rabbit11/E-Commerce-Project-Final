@@ -10,6 +10,7 @@ import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import Button from 'react-bootstrap/Button';
+import { BASE_URL } from '../config';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -63,10 +64,11 @@ export default function ProductEditScreen() {
   const [description, setDescription] = useState('');
 
   useEffect(() => {
+    //Fetch Data on Loading
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/products/${productId}`);
+        const { data } = await axios.get(BASE_URL +`/api/products/${productId}`);
         setName(data.name);
         setSlug(data.slug);
         setPrice(data.price);
@@ -86,12 +88,13 @@ export default function ProductEditScreen() {
     fetchData();
   }, [productId]);
 
+  //Handle Submit to Update
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
       await axios.put(
-        `/api/products/${productId}`,
+        BASE_URL +`/api/products/${productId}`,
         {
           _id: productId,
           name,
@@ -112,18 +115,21 @@ export default function ProductEditScreen() {
       });
       toast.success('Product updated successfully');
       navigate('/admin/products');
+      window.location.reload();
     } catch (err) {
       toast.error(getError(err));
       dispatch({ type: 'UPDATE_FAIL' });
     }
   };
+
+  //Handle File Upload
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const bodyFormData = new FormData();
     bodyFormData.append('file', file);
     try {
       dispatch({ type: 'UPLOAD_REQUEST' });
-      const { data } = await axios.post('/api/upload', bodyFormData, {
+      const { data } = await axios.post(BASE_URL +'/api/upload', bodyFormData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           authorization: `Bearer ${userInfo.token}`,
@@ -138,6 +144,7 @@ export default function ProductEditScreen() {
       dispatch({ type: 'UPLOAD_FAIL', payload: getError(err) });
     }
   };
+  
   return (
     <Container className="small-container">
       <Helmet>
@@ -150,6 +157,7 @@ export default function ProductEditScreen() {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
+        //Form for Edit
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="name">
             <Form.Label>Name</Form.Label>
@@ -228,6 +236,7 @@ export default function ProductEditScreen() {
             {loadingUpdate && <LoadingBox></LoadingBox>}
           </div>
         </Form>
+        
       )}
     </Container>
   );

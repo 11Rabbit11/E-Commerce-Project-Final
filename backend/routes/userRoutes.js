@@ -2,10 +2,11 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import expressAsyncHandler from "express-async-handler";
 import User from "../models/user_model.js";
-import { generateToken,isAuth, isAdmin } from "../utils.js";
+import { generateToken, isAuth, isAdmin } from "../utils.js";
 
 const userRouter = express.Router();
 
+// Get all users Admin Only
 userRouter.get(
   '/',
   isAuth,
@@ -16,6 +17,7 @@ userRouter.get(
   })
 );
 
+// Get user by id Admin Only
 userRouter.get(
   '/:id',
   isAuth,
@@ -30,6 +32,7 @@ userRouter.get(
   })
 );
 
+// Update user Admin Only
 userRouter.put(
   '/:id',
   isAuth,
@@ -48,6 +51,7 @@ userRouter.put(
   })
 );
 
+// Delete user by id Admin Only
 userRouter.delete(
   '/:id',
   isAuth,
@@ -68,7 +72,7 @@ userRouter.delete(
   })
 );
 
-
+// Create new user
 userRouter.post(
   "/signin",
   expressAsyncHandler(async (req, res) => {
@@ -89,6 +93,7 @@ userRouter.post(
   })
 );
 
+// For User Signup
 userRouter.post(
   "/signup",
   expressAsyncHandler(async (req, res) => {
@@ -108,6 +113,7 @@ userRouter.post(
   })
 );
 
+// Update user profile
 userRouter.put(
     '/profile',
     isAuth,

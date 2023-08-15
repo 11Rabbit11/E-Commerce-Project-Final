@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { BASE_URL } from '../config';
 
 export default function CartScreen() {
   const navigate = useNavigate();
@@ -17,8 +18,9 @@ export default function CartScreen() {
     cart: { cartItems },
   } = state;
 
+  //Function to Update Cart
   const updateCartHandler = async (item, quantity) => {
-    const { data } = await axios.get(`/api/products/${item._id}`);
+    const { data } = await axios.get( BASE_URL + `/api/products/${item._id}`);
     if (data.countInStock < quantity) {
       window.alert('Sorry. Product is out of stock');
       return;
@@ -28,10 +30,13 @@ export default function CartScreen() {
       payload: { ...item, quantity },
     });
   };
+
+  //Remove Cart Item
   const removeItemHandler = (item) => {
     ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
   };
 
+  //Clear Cart
   const checkoutHandler = () => {
     navigate('/signin?redirect=/shipping');
   };
@@ -41,6 +46,7 @@ export default function CartScreen() {
       <Helmet>
         <title>Shopping Cart</title>
       </Helmet>
+      {/* Shopping Cart */}
       <h1>Shopping Cart</h1>
       <Row>
         <Col md={8}>
